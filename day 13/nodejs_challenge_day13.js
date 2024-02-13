@@ -2,6 +2,7 @@ const WebSocket = require("ws");
 const express = require("express");
 const http = require("http");
 const path = require("path");
+const app = express();
 
 function setupWebSocket(server) {
   const wss = new WebSocket.Server({ server });
@@ -15,19 +16,14 @@ function setupWebSocket(server) {
       console.log("WebSocket client disconnected");
     });
   });
-
-  const app = express();
-
   app.get("/websocket", (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));
   });
-
   server.on("request", app);
 }
 
 const server = http.createServer();
 setupWebSocket(server);
-
 server.listen(3000, () => {
   console.log("Server is running on port 3000");
 });
