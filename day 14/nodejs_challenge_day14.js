@@ -1,5 +1,5 @@
-const cache = {};
 const express = require("express");
+const cache = {};
 const app = express();
 
 function cachingMiddleware(req, res, next) {
@@ -26,7 +26,7 @@ function cachingMiddleware(req, res, next) {
 }
 
 app.use(cachingMiddleware);
-app.get("/example", (req, res) => {
+app.get("/", (req, res) => {
   res.send("Hello, world!");
 });
 
