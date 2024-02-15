@@ -7,7 +7,7 @@ const uri = process.env.mongoURL;
 function connectToMongoDB() {
   mongoose
     .connect(uri)
-    .then(console.log("connection successful"))
+    .then(console.log("database connection successful"))
     .catch((err) => {
       console.log("some error in db connection");
       console.log(err);
